@@ -13,7 +13,7 @@ class Modal {
 	 * */
 	constructor(element) {
 		this.element = element;
-		this.buttonModal = document.querySelectorAll('[data-dismiss="modal"]');
+
 	}
 
 	/**
@@ -22,7 +22,10 @@ class Modal {
 	 * (с помощью метода Modal.onClose)
 	 * */
 	registerEvents() {
-
+		this.buttonModal = document.querySelectorAll('[data-dismiss="modal"]');
+		this.buttonModal.forEach((element) => {
+			element.addEventListener('click', () => this.onClose());
+		});
 	}
 
 	/**
@@ -30,19 +33,20 @@ class Modal {
 	 * Закрывает текущее окно (Modal.close())
 	 * */
 	onClose(e) {
-
+		this.close(e)
 	}
 	/**
 	 * Открывает окно: устанавливает CSS-свойство display
 	 * со значением «block»
 	 * */
 	open() {
-
+		this.element.style.display = "block";
+		this.registerEvents();
 	}
 	/**
 	 * Закрывает окно: удаляет CSS-свойство display
 	 * */
 	close() {
-
+		this.element.style.display = null;
 	}
 }

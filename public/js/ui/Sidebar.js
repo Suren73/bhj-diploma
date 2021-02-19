@@ -19,11 +19,12 @@ class Sidebar {
 	 * */
 	static initToggleButton() {
 		this.buttonPushMenu = document.querySelector('.sidebar-toggle');
+		this.bodyMini = document.querySelector('.sidebar-mini');
 		this.buttonPushMenu.addEventListener('click', (e) => {
 			e.preventDefault();
 
-			document.body.classList.toggle('sidebar-open');
-			document.body.classList.toggle('sidebar-collapse');
+			this.bodyMini.classList.toggle('sidebar-open');
+			this.bodyMini.classList.toggle('sidebar-collapse');
 		})
 	}
 
@@ -37,6 +38,13 @@ class Sidebar {
 	static initAuthLinks() {
 		this.menuItemLogin = document.querySelector('li.menu-item_login');
 		this.menuItemRegister = document.querySelector('li.menu-item_register');
-		this.menuItemLogin.addEventListener('click', console.log('Hello'));
+		this.menuItemLogin.addEventListener('click', (e) => {
+			e.preventDefault();
+			App.getModal('login').open();
+		});
+		this.menuItemRegister.addEventListener('click', (e) => {
+			e.preventDefault();
+			App.getModal('register').open();
+		})
 	}
 }
