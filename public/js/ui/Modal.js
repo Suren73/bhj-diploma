@@ -12,8 +12,9 @@ class Modal {
 	 * необходимо выкинуть ошибку.
 	 * */
 	constructor(element) {
+		if (!element) return alert('Ошибка!');
 		this.element = element;
-
+		this.registerEvents();
 	}
 
 	/**
@@ -41,7 +42,6 @@ class Modal {
 	 * */
 	open() {
 		this.element.style.display = "block";
-		this.registerEvents();
 	}
 	/**
 	 * Закрывает окно: удаляет CSS-свойство display
